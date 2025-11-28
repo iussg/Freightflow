@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View truck details and specifications">
+    <title>Truck Details - FreightFlow</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/truck-details.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo" aria-label="FreightFlow home">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">FreightFlow</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i data-feather="menu"></i>
+            </button>
+            
+            <div class="nav-menu">
+                <ul class="nav-links" role="list">
+                    <li><a href="booking.html">Search Trucks</a></li>
+                    <li><a href="#tracking">Track Load</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-secondary">Sign In</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Truck Details Section -->
+    <section class="details-section">
+        <div class="details-container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="booking.html">Search Results</a>
+                <i data-feather="chevron-right" aria-hidden="true"></i>
+                <span>Truck Details</span>
+            </nav>
+
+            <div class="details-layout">
+                <!-- Left Column: Truck Info -->
+                <div class="details-main">
+                    <!-- Truck Header -->
+                    <div class="truck-header-card">
+                        <div class="truck-badge-row">
+                            <span class="badge badge-success">
+                                <i data-feather="check-circle"></i>
+                                Available Now
+                            </span>
+                            <span class="badge badge-verified">
+                                <i data-feather="shield"></i>
+                                Verified
+                            </span>
+                        </div>
+
+                        <h1 class="truck-title">Tata 407 Open Body Truck</h1>
+                        
+                        <div class="truck-meta">
+                            <div class="meta-item">
+                                <i data-feather="truck" aria-hidden="true"></i>
+                                <span>Vehicle No: MH12AB1234</span>
+                            </div>
+                            <div class="meta-item">
+                                <i data-feather="calendar" aria-hidden="true"></i>
+                                <span>Model: 2022</span>
+                            </div>
+                            <div class="meta-item">
+                                <i data-feather="map-pin" aria-hidden="true"></i>
+                                <span>Current Location: Mumbai</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Specifications -->
+                    <div class="info-card">
+                        <h2 class="card-title">
+                            <i data-feather="info" aria-hidden="true"></i>
+                            Vehicle Specifications
+                        </h2>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <div class="spec-icon">📦</div>
+                                <div class="spec-content">
+                                    <span class="spec-label">Load Capacity</span>
+                                    <span class="spec-value">9 Tons</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">📏</div>
+                                <div class="spec-content">
+                                    <span class="spec-label">Dimensions</span>
+                                    <span class="spec-value">19 x 7 x 7 ft</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">🔧</div>
+                                <div class="spec-content">
+                                    <span class="spec-label">Body Type</span>
+                                    <span class="spec-value">Open Body</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <div class="spec-icon">⚙️</div>
+                                <div class="spec-content">
+                                    <span class="spec-label">Fuel Type</span>
+                                    <span class="spec-value">Diesel</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Driver Information -->
+                    <div class="info-card">
+                        <h2 class="card-title">
+                            <i data-feather="user" aria-hidden="true"></i>
+                            Driver & Transporter Details
+                        </h2>
+                        
+                        <div class="driver-profile">
+                            <div class="driver-avatar-large">RK</div>
+                            <div class="driver-info">
+                                <h3>Rajesh Kumar</h3>
+                                <p class="driver-license">License: DL1420200012345</p>
+                                <div class="driver-stats">
+                                    <div class="stat">
+                                        <i data-feather="star" aria-hidden="true"></i>
+                                        <span><strong>4.7</strong> rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i data-feather="package" aria-hidden="true"></i>
+                                        <span><strong>234</strong> trips</span>
+                                    </div>
+                                    <div class="stat">
+                                        <i data-feather="clock" aria-hidden="true"></i>
+                                        <span><strong>3</strong> years exp</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="transporter-info-box">
+                            <div class="transporter-header">
+                                <div class="transporter-avatar-sm">RT</div>
+                                <div>
+                                    <h4>Rajesh Transport Co.</h4>
+                                    <p class="text-muted">GST: 27AABCU9603R1ZM</p>
+                                </div>
+                            </div>
+                            <div class="transporter-badges">
+                                <span class="mini-badge">✓ GST Verified</span>
+                                <span class="mini-badge">✓ Insurance Valid</span>
+                                <span class="mini-badge">✓ PAN Verified</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Section -->
+                    <div class="info-card">
+                        <h2 class="card-title">
+                            <i data-feather="message-square" aria-hidden="true"></i>
+                            Customer Reviews (48)
+                        </h2>
+                        
+                        <div class="reviews-list">
+                            <article class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-avatar">AS</div>
+                                    <div class="reviewer-info">
+                                        <h4>Amit Sharma</h4>
+                                        <div class="review-rating">
+                                            <span class="stars">★★★★★</span>
+                                            <span class="review-date">2 days ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="review-text">Excellent service! Driver was punctual and handled the goods with care. Highly recommended for fragile cargo.</p>
+                            </article>
+
+                            <article class="review-item">
+                                <div class="review-header">
+                                    <div class="reviewer-avatar">PG</div>
+                                    <div class="reviewer-info">
+                                        <h4>Priya Gupta</h4>
+                                        <div class="review-rating">
+                                            <span class="stars">★★★★☆</span>
+                                            <span class="review-date">1 week ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="review-text">Good experience overall. Delivery was on time. Would use again for Mumbai-Pune route.</p>
+                            </article>
+                        </div>
+
+                        <button class="btn-text">View All Reviews</button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Pricing & Booking -->
+                <aside class="details-sidebar">
+                    <div class="pricing-card sticky-card">
+                        <div class="price-header">
+                            <div class="price-main">
+                                <span class="price-label">Estimated Fare</span>
+                                <span class="price-value">₹12,500</span>
+                            </div>
+                            <div class="route-info">
+                                <div class="route-point">
+                                    <i data-feather="map-pin" aria-hidden="true"></i>
+                                    <span>Mumbai</span>
+                                </div>
+                                <div class="route-arrow">→</div>
+                                <div class="route-point">
+                                    <i data-feather="navigation" aria-hidden="true"></i>
+                                    <span>Pune</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="price-breakdown">
+                            <h3>Price Breakdown</h3>
+                            <div class="breakdown-item">
+                                <span>Base Fare (450 km)</span>
+                                <span>₹10,800</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Loading/Unloading</span>
+                                <span>₹800</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Toll Charges (est.)</span>
+                                <span>₹450</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>GST (5%)</span>
+                                <span>₹450</span>
+                            </div>
+                            <div class="breakdown-total">
+                                <span>Total Amount</span>
+                                <span>₹12,500</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-full" id="proceedBooking">
+                            <i data-feather="check-circle"></i>
+                            <span>Proceed to Book</span>
+                        </button>
+
+                        <div class="trust-footer">
+                            <div class="trust-item-small">
+                                <i data-feather="lock" aria-hidden="true"></i>
+                                <span>Secure Payment</span>
+                            </div>
+                            <div class="trust-item-small">
+                                <i data-feather="shield" aria-hidden="true"></i>
+                                <span>100% Verified</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/payment.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

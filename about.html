@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Frequently asked questions about FreightFlow - freight booking, pricing, tracking, and support.">
+    <title>FAQ - FreightFlow</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/testimonials.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="index.html" class="logo" aria-label="FreightFlow home">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">FreightFlow</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i data-feather="menu"></i>
+        </button>
+        
+        <div class="nav-menu">
+            <ul class="nav-links" role="list">
+                <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="tracking.html" class="nav-link">Track Load</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-secondary btn-sign-in" onclick="handleSignIn()">
+                    Sign In
+                </button>
+                <a href="booking.html" class="btn btn-primary">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- FAQ Hero -->
+    <section class="faq-hero">
+        <div class="faq-hero-container">
+            <h1>Frequently Asked Questions</h1>
+            <p>Everything you need to know about FreightFlow</p>
+            
+            <div class="search-box">
+                <i data-feather="search" aria-hidden="true"></i>
+                <input type="text" id="faqSearch" placeholder="Search for answers..." aria-label="Search FAQs">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="all">All Questions</button>
+                <button class="category-btn" data-category="booking">Booking</button>
+                <button class="category-btn" data-category="pricing">Pricing</button>
+                <button class="category-btn" data-category="tracking">Tracking</button>
+                <button class="category-btn" data-category="payments">Payments</button>
+                <button class="category-btn" data-category="verification">Verification</button>
+            </div>
+
+            <div class="faq-grid">
+                <!-- Left Column: FAQ Accordion -->
+                <div class="faq-accordion" id="faqAccordion" role="region" aria-label="Frequently Asked Questions">
+                    <!-- Booking Questions -->
+                    <div class="faq-group" data-category="booking">
+                        <h2 class="faq-group-title">Booking & Search</h2>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">
+                                <span>How do I book a truck on FreightFlow?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-1" aria-hidden="true">
+                                <p>Booking is simple: (1) Enter pickup and delivery locations, (2) Select truck type, (3) Browse available trucks and prices, (4) Choose your preferred transporter, (5) Fill load details and make payment. Your booking confirmation will be sent instantly via SMS and email.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">
+                                <span>How far in advance can I book a truck?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-2" aria-hidden="true">
+                                <p>You can book trucks up to 30 days in advance. However, we recommend booking 2-3 days before pickup for the best availability and pricing. Last-minute bookings (same day or next day) may have limited options depending on your route.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">
+                                <span>Can I cancel or modify a booking?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-3" aria-hidden="true">
+                                <p>Yes. Free cancellation is available up to 12 hours before pickup. Cancellations within 12 hours incur a 10% fee. Modifications (date, time, location) can be made up to 6 hours before pickup at no extra charge, subject to availability.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing Questions -->
+                    <div class="faq-group" data-category="pricing">
+                        <h2 class="faq-group-title">Pricing & Payments</h2>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">
+                                <span>How is freight pricing calculated?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-4" aria-hidden="true">
+                                <p>Pricing is based on: distance (per km rate), truck type and capacity, loading/unloading charges, toll estimates, and 5% GST. Our AI optimizes pricing by considering route demand, time of booking, and transporter availability to give you the best rates.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">
+                                <span>What payment methods do you accept?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-5" aria-hidden="true">
+                                <p>We accept all major payment methods: UPI (GPay, PhonePe, Paytm, BHIM), Credit/Debit Cards (Visa, Mastercard, RuPay), Net Banking (all major banks), and Digital Wallets (Paytm, PhonePe, Amazon Pay). All transactions are 256-bit SSL encrypted.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">
+                                <span>Do you provide GST invoices?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-6" aria-hidden="true">
+                                <p>Yes, GST-compliant invoices are automatically generated after payment and available for download in your dashboard. Invoices include all required details: GSTIN, HSN code, itemized breakdown, and tax calculations. PDF format suitable for accounting.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tracking Questions -->
+                    <div class="faq-group" data-category="tracking">
+                        <h2 class="faq-group-title">Tracking & Delivery</h2>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-7">
+                                <span>How can I track my shipment?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-7" aria-hidden="true">
+                                <p>Track shipments in real-time through: (1) Dashboard - click "Track" on your booking, (2) Tracking URL sent via SMS/email, (3) Mobile app notifications. You'll see live GPS location, estimated arrival time, route progress, and driver contact details.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-8">
+                                <span>What if my shipment is delayed?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-8" aria-hidden="true">
+                                <p>You'll receive instant notifications if delays occur. Common reasons include traffic, weather, or checkpoints. Contact the driver directly via in-app calling/messaging, or reach our 24/7 support at 1800-XXX-XXXX. We monitor all shipments and proactively inform you of any issues.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Verification Questions -->
+                    <div class="faq-group" data-category="verification">
+                        <h2 class="faq-group-title">Verification & Trust</h2>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-9">
+                                <span>How are transporters verified?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-9" aria-hidden="true">
+                                <p>Every transporter undergoes triple verification: (1) Document check - GST, PAN, vehicle RC, driver's license, (2) Background screening - police verification, previous employer checks, (3) Performance tracking - ratings, on-time delivery rate, complaint history. Only verified partners appear on our platform.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false" aria-controls="faq-10">
+                                <span>Is my cargo insured?</span>
+                                <i data-feather="chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="faq-answer" id="faq-10" aria-hidden="true">
+                                <p>Optional insurance is available for ₹500 covering up to ₹5 lakh cargo value. This protects against damage, theft, or loss during transit. Check the insurance box during booking. Claims are processed within 7 working days with required documentation (FIR, photos, invoice).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Support Card -->
+                <div class="faq-sidebar">
+                    <div class="support-widget">
+                        <div class="support-header">
+                            <div class="support-icon">
+                                <i data-feather="headphones" aria-hidden="true"></i>
+                            </div>
+                            <h3>Still have questions?</h3>
+                            <p>Our support team is here to help</p>
+                        </div>
+
+                        <div class="support-options">
+                            <button class="support-btn">
+                                <i data-feather="phone" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Call Us</strong>
+                                    <span>1800-XXX-XXXX (Toll-free)</span>
+                                </div>
+                            </button>
+
+                            <button class="support-btn">
+                                <i data-feather="mail" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Email Support</strong>
+                                    <span>support@freightflow.in</span>
+                                </div>
+                            </button>
+
+                            <button class="support-btn" id="chatbotBtn">
+                                <i data-feather="message-circle" aria-hidden="true"></i>
+                                <div>
+                                    <strong>Live Chat</strong>
+                                    <span>Average response: 2 mins</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <div class="support-hours">
+                            <i data-feather="clock" aria-hidden="true"></i>
+                            <span>Available 24/7</span>
+                        </div>
+                    </div>
+
+                    <div class="popular-articles">
+                        <h4>Popular Articles</h4>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <i data-feather="file-text" aria-hidden="true"></i>
+                                    <span>Getting Started Guide</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i data-feather="file-text" aria-hidden="true"></i>
+                                    <span>Understanding Pricing</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i data-feather="file-text" aria-hidden="true"></i>
+                                    <span>Driver Verification Process</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbot Widget Placeholder -->
+    <div class="chatbot-widget" id="chatbotWidget" hidden>
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">🤖</div>
+            <div>
+                <h4>FreightFlow Assistant</h4>
+                <p class="chatbot-status">● Online</p>
+            </div>
+            <button class="chatbot-close" id="chatbotClose" aria-label="Close chat">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message bot">
+                <div class="message-avatar">🤖</div>
+                <div class="message-content">
+                    <p>Hi! I'm your FreightFlow assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chatbot-input">
+            <input type="text" placeholder="Type your message..." aria-label="Chat message input">
+            <button aria-label="Send message">
+                <i data-feather="send"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">FreightFlow</span>
+                    </div>
+                    <p>AI-powered freight matching for the Indian logistics industry.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="#">Book Freight</a></li>
+                        <li><a href="#">Track Shipment</a></li>
+                        <li><a href="#">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FreightFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

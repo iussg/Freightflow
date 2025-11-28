@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your freight shipment in real-time with live location updates.">
+    <title>Track Shipment - FreightFlow</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- MapmyIndia SDK -->
+    <script src="https://apis.mappls.com/advancedmaps/api/<YOUR_API_KEY>/map_sdk?layer=vector&v=3.0"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="index.html" class="logo" aria-label="FreightFlow home">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">FreightFlow</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i data-feather="menu"></i>
+        </button>
+        
+        <div class="nav-menu">
+            <ul class="nav-links" role="list">
+                <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="tracking.html" class="nav-link">Track Load</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-secondary btn-sign-in" onclick="handleSignIn()">
+                    Sign In
+                </button>
+                <a href="booking.html" class="btn btn-primary">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Tracking Section -->
+    <section class="tracking-section">
+        <div class="tracking-container">
+            <!-- Tracking Header -->
+            <div class="tracking-header">
+                <div class="tracking-info">
+                    <h1>Track Shipment</h1>
+                    <p class="booking-id">Booking ID: <strong>FF240567890</strong></p>
+                </div>
+
+                <div class="tracking-status">
+                    <span class="status-badge in-transit">
+                        <i data-feather="navigation" aria-hidden="true"></i>
+                        In Transit
+                    </span>
+                    <p class="eta">ETA: 2 hours 15 mins</p>
+                </div>
+            </div>
+
+            <div class="tracking-layout">
+                <!-- Map Container -->
+                <div class="map-container">
+                    <div id="trackingMap" class="tracking-map"></div>
+                    
+                    <div class="map-controls">
+                        <button class="map-btn" id="centerMap" aria-label="Center map on vehicle">
+                            <i data-feather="crosshair"></i>
+                        </button>
+                        <button class="map-btn" id="refreshLocation" aria-label="Refresh location">
+                            <i data-feather="refresh-cw"></i>
+                        </button>
+                    </div>
+
+                    <div class="live-indicator">
+                        <span class="pulse-dot"></span>
+                        <span>Live Tracking</span>
+                    </div>
+                </div>
+
+                <!-- Tracking Details Sidebar -->
+                <aside class="tracking-sidebar">
+                    <!-- Route Info -->
+                    <div class="tracking-card">
+                        <h3>Route Details</h3>
+                        
+                        <div class="route-timeline">
+                            <div class="route-point completed">
+                                <div class="point-marker"></div>
+                                <div class="point-content">
+                                    <h4>Pickup Location</h4>
+                                    <p>Mumbai, Maharashtra</p>
+                                    <p class="point-time">Picked up at 08:30 AM</p>
+                                </div>
+                            </div>
+
+                            <div class="route-point active">
+                                <div class="point-marker"></div>
+                                <div class="point-content">
+                                    <h4>Current Location</h4>
+                                    <p id="currentLocation">NH48, Navi Mumbai</p>
+                                    <p class="point-time" id="lastUpdate">Updated 2 mins ago</p>
+                                </div>
+                            </div>
+
+                            <div class="route-point">
+                                <div class="point-marker"></div>
+                                <div class="point-content">
+                                    <h4>Delivery Location</h4>
+                                    <p>Pune, Maharashtra</p>
+                                    <p class="point-time">Expected at 02:45 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="route-stats">
+                            <div class="stat">
+                                <i data-feather="navigation" aria-hidden="true"></i>
+                                <div>
+                                    <span class="stat-label">Distance Covered</span>
+                                    <span class="stat-value">85 km</span>
+                                </div>
+                            </div>
+
+                            <div class="stat">
+                                <i data-feather="clock" aria-hidden="true"></i>
+                                <div>
+                                    <span class="stat-label">Time Elapsed</span>
+                                    <span class="stat-value">2h 30m</span>
+                                </div>
+                            </div>
+
+                            <div class="stat">
+                                <i data-feather="navigation-2" aria-hidden="true"></i>
+                                <div>
+                                    <span class="stat-label">Remaining Distance</span>
+                                    <span class="stat-value">65 km</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Vehicle Details -->
+                    <div class="tracking-card">
+                        <h3>Vehicle & Driver</h3>
+                        
+                        <div class="driver-card">
+                            <div class="driver-avatar-large">RK</div>
+                            <div class="driver-details">
+                                <h4>Rajesh Kumar</h4>
+                                <p class="driver-rating">
+                                    <span class="stars">★ 4.7</span>
+                                    <span>(234 trips)</span>
+                                </p>
+                                <p class="driver-vehicle">Tata 407 • MH12AB1234</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-actions">
+                            <button class="btn btn-secondary btn-full">
+                                <i data-feather="phone" aria-hidden="true"></i>
+                                <span>Call Driver</span>
+                            </button>
+                            <button class="btn btn-secondary btn-full">
+                                <i data-feather="message-circle" aria-hidden="true"></i>
+                                <span>Message Driver</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Load Details -->
+                    <div class="tracking-card">
+                        <h3>Load Information</h3>
+                        
+                        <div class="load-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Material Type</span>
+                                <span class="detail-value">FMCG Goods</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Weight</span>
+                                <span class="detail-value">5.5 Tons</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Truck Type</span>
+                                <span class="detail-value">Open Body</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Insurance</span>
+                                <span class="detail-value">Covered</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Support -->
+                    <div class="tracking-card support-card">
+                        <div class="support-icon">
+                            <i data-feather="headphones" aria-hidden="true"></i>
+                        </div>
+                        <h4>Need Help?</h4>
+                        <p>Our support team is available 24/7</p>
+                        <button class="btn btn-primary btn-full">Contact Support</button>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script src="js/map-integration.js"></script>
+    <script src="js/tracking.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

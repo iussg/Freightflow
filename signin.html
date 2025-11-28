@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in to your FreightFlow account">
+    <title>Sign In - FreightFlow</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo" aria-label="FreightFlow home">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">FreightFlow</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="auth-main">
+        <div class="auth-container">
+            <!-- Sign In Form -->
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Welcome Back!</h1>
+                    <p>Sign in to your FreightFlow account</p>
+                </div>
+
+                <form id="signinForm" class="auth-form">
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i data-feather="mail" aria-hidden="true"></i>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                placeholder="your@email.com"
+                                required
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <i data-feather="lock" aria-hidden="true"></i>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Enter your password"
+                                required
+                            >
+                            <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                                <i data-feather="eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember & Forgot -->
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#forgot" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <!-- Sign In Button -->
+                    <button type="submit" class="btn btn-primary btn-full btn-large">
+                        Sign In
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- Social Sign In -->
+                <div class="social-buttons">
+                    <button type="button" class="btn-social" onclick="socialSignIn('google')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"></circle>
+                        </svg>
+                        Google
+                    </button>
+                    <button type="button" class="btn-social" onclick="socialSignIn('phone')">
+                        <i data-feather="phone" aria-hidden="true"></i>
+                        Phone
+                    </button>
+                </div>
+
+                <!-- Sign Up Link -->
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="signup.html" class="auth-link">Sign up here</a></p>
+                </div>
+            </div>
+
+            <!-- Features Sidebar -->
+            <div class="auth-features">
+                <h2>Why Choose FreightFlow?</h2>
+                <ul class="features-list">
+                    <li>
+                        <i data-feather="check-circle"></i>
+                        <span>Find trucks in seconds</span>
+                    </li>
+                    <li>
+                        <i data-feather="check-circle"></i>
+                        <span>Verified drivers & transporters</span>
+                    </li>
+                    <li>
+                        <i data-feather="check-circle"></i>
+                        <span>Real-time tracking</span>
+                    </li>
+                    <li>
+                        <i data-feather="check-circle"></i>
+                        <span>Competitive pricing</span>
+                    </li>
+                    <li>
+                        <i data-feather="check-circle"></i>
+                        <span>24/7 customer support</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 FreightFlow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        feather.replace();
+
+        // Toggle Password Visibility
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const btn = event.target.closest('.toggle-password');
+            
+            if (field.type === 'password') {
+                field.type = 'text';
+                btn.innerHTML = '<i data-feather="eye-off" aria-hidden="true"></i>';
+            } else {
+                field.type = 'password';
+                btn.innerHTML = '<i data-feather="eye" aria-hidden="true"></i>';
+            }
+            feather.replace();
+        }
+
+        // Social Sign In
+        function socialSignIn(provider) {
+            console.log('Sign in with', provider);
+            alert(`Sign in with ${provider} coming soon!`);
+        }
+
+        // Form Submission
+        document.getElementById('signinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            console.log('Signing in:', email);
+            
+            // Simulate sign in
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            alert('Sign in successful! Redirecting...');
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- PWA Configuration -->
+    <meta name="theme-color" content="#0A1931">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="FreightFlow">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+    
+    <!-- Mobile Styles -->
+    <link rel="stylesheet" href="css/mobile.css">
+
+    <meta name="description" content="FreightFlow - AI-powered reverse logistics platform. Find return loads for empty trucks across India. Save fuel, increase profits, reduce emissions.">
+    <title>FreightFlow - Smart Freight Matching for Indian Truckers</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="index.html" class="logo" aria-label="FreightFlow home">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">FreightFlow</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i data-feather="menu"></i>
+        </button>
+        
+        <div class="nav-menu">
+            <ul class="nav-links" role="list">
+                <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="tracking.html" class="nav-link">Track Load</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="signin.html" class="btn btn-primary">
+                    Sign in
+                </a>
+
+                <a href="booking.html" class="btn btn-primary">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-feather="trending-up"></i>
+                    <span>Trusted by 50,000+ truckers across India</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Turn Empty Trucks Into
+                    <span class="gradient-text">Profit Machines</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    AI-powered freight matching finds return loads before you complete delivery. 
+                    No more empty runs. Save up to 40% on fuel costs.
+                </p>
+                
+                <!-- Quick Booking Form -->
+                <div class="booking-form-wrapper" style="position: relative; overflow: visible; z-index: 100;">
+                <form class="booking-form" id="quickBookingForm" role="search" aria-label="Quick freight search" style="overflow: visible;">
+                    <div class="form-grid" style="overflow: visible;">
+                    <div class="form-group" style="overflow: visible;">
+                        <label for="pickup" class="sr-only">Pickup location</label>
+                        <div class="input-wrapper" style="overflow: visible;">
+                        <i data-feather="map-pin" aria-hidden="true"></i>
+                        <input 
+                            type="text" 
+                            id="pickup" 
+                            name="pickup" 
+                            placeholder="Pickup Location" 
+                            required
+                            autocomplete="off"
+                            aria-required="true"
+                            style="overflow: visible;"
+                        >
+                        <input type="hidden" id="pickup-selected" name="pickup-selected" value="">
+                        </div>
+                        <ul id="pickupSuggestions" class="autocomplete-list" role="listbox" style="overflow-y: auto; z-index: 1000;"></ul>
+                    </div>
+                    
+                    <div class="form-group" style="overflow: visible;">
+                        <label for="delivery" class="sr-only">Delivery location</label>
+                        <div class="input-wrapper" style="overflow: visible;">
+                        <i data-feather="navigation" aria-hidden="true"></i>
+                        <input 
+                            type="text" 
+                            id="delivery" 
+                            name="delivery" 
+                            placeholder="Delivery Location" 
+                            required
+                            autocomplete="off"
+                            aria-required="true"
+                            style="overflow: visible;"
+                        >
+                        <input type="hidden" id="delivery-selected" name="delivery-selected" value="">
+                        </div>
+                        <ul id="deliverySuggestions" class="autocomplete-list" role="listbox" style="overflow-y: auto; z-index: 1000;"></ul>
+                    </div>
+
+                    <div class="form-group" style="overflow: visible;">
+                        <label for="truckType" class="sr-only">Truck type</label>
+                        <div class="input-wrapper" style="overflow: visible; position: relative; z-index: 999;">
+                        <i data-feather="truck" aria-hidden="true"></i>
+                        <select 
+                            id="truckType" 
+                            name="truckType" 
+                            required 
+                            aria-required="true"
+                            style="position: relative; z-index: 999; overflow: visible;"
+                        >
+                            <option value="">Select Truck Type</option>
+                            <option value="open">Open Body</option>
+                            <option value="container">Container</option>
+                            <option value="trailer">Trailer</option>
+                            <option value="tanker">Tanker</option>
+                        </select>
+                        </div>
+                    </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-search" aria-label="Find available loads" style="width: 100%; margin-top: var(--space-3);">
+                        <i data-feather="search"></i>
+                        <span>Find Loads</span>
+                    </button>
+                </form>
+                </div>
+
+
+                <!-- Trust Indicators -->
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <i data-feather="shield" aria-hidden="true"></i>
+                        <span>100% Verified Loads</span>
+                    </div>
+                    <div class="trust-item">
+                        <i data-feather="clock" aria-hidden="true"></i>
+                        <span>Real-time Matching</span>
+                    </div>
+                    <div class="trust-item">
+                        <i data-feather="check-circle" aria-hidden="true"></i>
+                        <span>Instant Booking</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual" aria-hidden="true">
+                <div class="hero-card card-1">
+                    <div class="card-icon">📍</div>
+                    <div class="card-content">
+                        <p class="card-label">Active Loads</p>
+                        <p class="card-value">12,847</p>
+                    </div>
+                </div>
+                
+                <div class="hero-card card-2">
+                    <div class="card-icon">🚚</div>
+                    <div class="card-content">
+                        <p class="card-label">Available Trucks</p>
+                        <p class="card-value">8,562</p>
+                    </div>
+                </div>
+                
+                <div class="hero-card card-3">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <p class="card-label">Avg. Savings</p>
+                        <p class="card-value">₹45,000/mo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- How It Works Section -->
+<section class="how-it-works" id="how-it-works">
+    <div class="how-container">
+        <div class="section-header-center">
+            <h2 class="section-title">How FreightFlow Works</h2>
+            <p class="section-subtitle">Book a truck in 3 simple steps</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <div class="step-icon">🔍</div>
+                <h3>Search for Loads</h3>
+                <p>Enter your pickup and delivery locations. Our AI instantly finds available freight matching your truck type and route.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <div class="step-icon">✅</div>
+                <h3>Choose & Book</h3>
+                <p>Compare verified transporters, view transparent pricing with GST breakdown, and confirm booking with secure payment options.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <div class="step-icon">📍</div>
+                <h3>Track Shipment</h3>
+                <p>Monitor your load in real-time with GPS tracking, receive instant notifications, and communicate directly with drivers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Pricing Section -->
+<section class="pricing" id="pricing">
+    <div class="pricing-container">
+        <div class="section-header-center">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">No hidden charges. Pay only what you use.</p>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Standard Plan -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Starter</h3>
+                    <p class="pricing-desc">For occasional shippers</p>
+                </div>
+                
+                <div class="pricing-value">
+                    <span class="currency">₹</span>
+                    <span class="amount">0</span>
+                    <span class="period">/month</span>
+                </div>
+
+                <ul class="pricing-features">
+                    <li><i data-feather="check" aria-hidden="true"></i> Basic search</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> Up to 10 bookings/month</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> Email support</li>
+                    <li class="disabled"><i data-feather="x" aria-hidden="true"></i> Priority support</li>
+                    <li class="disabled"><i data-feather="x" aria-hidden="true"></i> Bulk discounts</li>
+                </ul>
+
+                <button class="btn btn-secondary btn-full">
+                    <i data-feather="play" aria-hidden="true"></i>
+                    Get Started Free
+                </button>
+            </div>
+
+            <!-- Professional Plan -->
+            <div class="pricing-card featured">
+                <div class="pricing-badge">Most Popular</div>
+                
+                <div class="pricing-header">
+                    <h3>Professional</h3>
+                    <p class="pricing-desc">For regular businesses</p>
+                </div>
+                
+                <div class="pricing-value">
+                    <span class="currency">₹</span>
+                    <span class="amount">4,999</span>
+                    <span class="period">/month</span>
+                </div>
+
+                <ul class="pricing-features">
+                    <li><i data-feather="check" aria-hidden="true"></i> Advanced search</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> Unlimited bookings</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> 24/7 phone support</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> Priority matching</li>
+                    <li class="disabled"><i data-feather="x" aria-hidden="true"></i> Bulk discounts</li>
+                </ul>
+
+                <button class="btn btn-primary btn-full">
+                    <i data-feather="arrow-right" aria-hidden="true"></i>
+                    Start 7-Day Trial
+                </button>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Enterprise</h3>
+                    <p class="pricing-desc">For large fleets</p>
+                </div>
+                
+                <div class="pricing-value">
+                    <span class="custom">Custom</span>
+                </div>
+
+                <ul class="pricing-features">
+                    <li><i data-feather="check" aria-hidden="true"></i> Everything in Pro</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> API access</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> Dedicated manager</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> Bulk discounts</li>
+                    <li><i data-feather="check" aria-hidden="true"></i> Custom integrations</li>
+                </ul>
+
+                <button class="btn btn-secondary btn-full" onclick="handleContactSales()">
+                    <i data-feather="mail" aria-hidden="true"></i>
+                    Contact Sales
+                </button>
+            </div>
+        </div>
+
+        <div class="pricing-faq">
+            <h3>Frequently Asked About Pricing</h3>
+            <div class="faq-items">
+                <details class="faq-detail">
+                    <summary>Can I cancel anytime?</summary>
+                    <p>Yes, cancel your subscription anytime with no penalties. All plans are month-to-month.</p>
+                </details>
+                
+                <details class="faq-detail">
+                    <summary>What's included in the price?</summary>
+                    <p>Search, matching, booking management, live tracking, and customer support. GST calculated at checkout.</p>
+                </details>
+                
+                <details class="faq-detail">
+                    <summary>Is there a setup fee?</summary>
+                    <p>No setup fees. You pay only for the plan you choose, plus per-booking GST charges.</p>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <script src="js/main.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage your freight bookings, track shipments, and view order history.">
+    <title>Dashboard - FreightFlow</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <a href="index.html" class="logo" aria-label="FreightFlow home">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">FreightFlow</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i data-feather="menu"></i>
+        </button>
+        
+        <div class="nav-menu">
+            <ul class="nav-links" role="list">
+                <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="tracking.html" class="nav-link">Track Load</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-secondary btn-sign-in" onclick="handleSignIn()">
+                    Sign In
+                </button>
+                <a href="booking.html" class="btn btn-primary">
+                    Get Started
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <h2>Dashboard</h2>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Close sidebar">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#overview" class="nav-item active" data-section="overview">
+                    <i data-feather="grid" aria-hidden="true"></i>
+                    <span>Overview</span>
+                </a>
+                <a href="#active-bookings" class="nav-item" data-section="active-bookings">
+                    <i data-feather="truck" aria-hidden="true"></i>
+                    <span>Active Bookings</span>
+                    <span class="count-badge">3</span>
+                </a>
+                <a href="#past-orders" class="nav-item" data-section="past-orders">
+                    <i data-feather="package" aria-hidden="true"></i>
+                    <span>Past Orders</span>
+                </a>
+                <a href="#saved-trucks" class="nav-item" data-section="saved-trucks">
+                    <i data-feather="bookmark" aria-hidden="true"></i>
+                    <span>Saved Trucks</span>
+                </a>
+                <a href="#invoices" class="nav-item" data-section="invoices">
+                    <i data-feather="file-text" aria-hidden="true"></i>
+                    <span>Invoices</span>
+                </a>
+                <a href="#profile" class="nav-item" data-section="profile">
+                    <i data-feather="user" aria-hidden="true"></i>
+                    <span>Profile & KYC</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-full">
+                    <i data-feather="log-out" aria-hidden="true"></i>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Overview Section -->
+            <section class="dashboard-section active" id="overview">
+                <div class="section-header">
+                    <h1>Welcome back, Suresh Kumar!</h1>
+                    <button class="btn btn-primary">
+                        <i data-feather="plus" aria-hidden="true"></i>
+                        <span>Book New Freight</span>
+                    </button>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i data-feather="truck" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Active Shipments</span>
+                            <span class="stat-value">3</span>
+                            <span class="stat-change positive">+1 from last month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i data-feather="check-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Completed Orders</span>
+                            <span class="stat-value">28</span>
+                            <span class="stat-change positive">+5 this month</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i data-feather="dollar-sign" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Total Spent</span>
+                            <span class="stat-value">₹3.2L</span>
+                            <span class="stat-change">This quarter</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i data-feather="trending-up" aria-hidden="true"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Avg. Savings</span>
+                            <span class="stat-value">₹4,500</span>
+                            <span class="stat-change positive">Per shipment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Bookings Quick View -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Active Shipments</h2>
+                        <a href="#active-bookings" class="link-btn" data-section="active-bookings">View All</a>
+                    </div>
+
+                    <div class="bookings-list" id="activeBookingsList">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+
+                    <div class="activity-timeline">
+                        <div class="activity-item">
+                            <div class="activity-icon success">
+                                <i data-feather="check" aria-hidden="true"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-title">Shipment Delivered Successfully</p>
+                                <p class="activity-desc">Booking #FF240567891 • Mumbai → Pune</p>
+                                <p class="activity-time">2 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon info">
+                                <i data-feather="navigation" aria-hidden="true"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-title">Shipment In Transit</p>
+                                <p class="activity-desc">Booking #FF240567890 • Delhi → Jaipur</p>
+                                <p class="activity-time">5 hours ago</p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-icon warning">
+                                <i data-feather="package" aria-hidden="true"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p class="activity-title">Pickup Scheduled</p>
+                                <p class="activity-desc">Booking #FF240567889 • Bangalore → Chennai</p>
+                                <p class="activity-time">1 day ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Active Bookings Section -->
+            <section class="dashboard-section" id="active-bookings">
+                <div class="section-header">
+                    <h1>Active Bookings</h1>
+                </div>
+
+                <div class="bookings-grid" id="activeBookingsGrid">
+                    <!-- Dynamic content -->
+                </div>
+            </section>
+
+            <!-- Past Orders Section -->
+            <section class="dashboard-section" id="past-orders">
+                <div class="section-header">
+                    <h1>Past Orders</h1>
+                    <div class="filter-controls">
+                        <select class="filter-select">
+                            <option value="all">All Time</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="orders-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>Route</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pastOrdersTable">
+                            <!-- Dynamic content -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Saved Trucks Section -->
+            <section class="dashboard-section" id="saved-trucks">
+                <div class="section-header">
+                    <h1>Saved Trucks</h1>
+                </div>
+
+                <div class="trucks-grid" id="savedTrucksGrid">
+                    <!-- Dynamic content -->
+                </div>
+            </section>
+
+            <!-- Invoices Section -->
+            <section class="dashboard-section" id="invoices">
+                <div class="section-header">
+                    <h1>Invoices</h1>
+                </div>
+
+                <div class="invoices-list" id="invoicesList">
+                    <!-- Dynamic content -->
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section class="dashboard-section" id="profile">
+                <div class="section-header">
+                    <h1>Profile & KYC</h1>
+                </div>
+
+                <div class="profile-layout">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Personal Information</h2>
+                            <button class="btn-text">Edit</button>
+                        </div>
+
+                        <form class="profile-form">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" id="fullName" value="Suresh Kumar" disabled>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" value="suresh.kumar@example.com" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" value="+91 9876543210" disabled>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="company">Company Name</label>
+                                    <input type="text" id="company" value="Kumar Traders Pvt Ltd" disabled>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>Business Details</h2>
+                            <button class="btn-text">Edit</button>
+                        </div>
+
+                        <form class="profile-form">
+                            <div class="form-field">
+                                <label for="gst">GST Number</label>
+                                <input type="text" id="gst" value="27AABCU9603R1ZM" disabled>
+                                <span class="field-status verified">
+                                    <i data-feather="check-circle"></i>
+                                    Verified
+                                </span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="pan">PAN Number</label>
+                                <input type="text" id="pan" value="AABCU9603R" disabled>
+                                <span class="field-status verified">
+                                    <i data-feather="check-circle"></i>
+                                    Verified
+                                </span>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="address">Business Address</label>
+                                <textarea id="address" rows="3" disabled>123 MG Road, Andheri West, Mumbai, Maharashtra - 400058</textarea>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>KYC Documents</h2>
+                        </div>
+
+                        <div class="documents-list">
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i data-feather="file-text" aria-hidden="true"></i>
+                                </div>
+                                <div class="document-info">
+                                    <h4>GST Certificate</h4>
+                                    <p>Uploaded on 15 Jan 2025</p>
+                                </div>
+                                <span class="document-status verified">Verified</span>
+                            </div>
+
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i data-feather="file-text" aria-hidden="true"></i>
+                                </div>
+                                <div class="document-info">
+                                    <h4>PAN Card</h4>
+                                    <p>Uploaded on 15 Jan 2025</p>
+                                </div>
+                                <span class="document-status verified">Verified</span>
+                            </div>
+
+                            <div class="document-item">
+                                <div class="document-icon">
+                                    <i data-feather="file-text" aria-hidden="true"></i>
+                                </div>
+                                <div class="document-info">
+                                    <h4>Address Proof</h4>
+                                    <p>Uploaded on 15 Jan 2025</p>
+                                </div>
+                                <span class="document-status pending">Pending Review</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary btn-full">
+                            <i data-feather="upload" aria-hidden="true"></i>
+                            <span>Upload New Document</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div class="notifications-panel" id="notificationsPanel" hidden>
+        <div class="panel-header">
+            <h3>Notifications</h3>
+            <button class="btn-icon" id="closeNotifications" aria-label="Close notifications">
+                <i data-feather="x"></i>
+            </button>
+        </div>
+
+        <div class="notifications-list">
+            <div class="notification-item unread">
+                <div class="notification-icon success">
+                    <i data-feather="check-circle" aria-hidden="true"></i>
+                </div>
+                <div class="notification-content">
+                    <p class="notification-title">Shipment Delivered</p>
+                    <p class="notification-text">Your booking #FF240567891 has been delivered successfully</p>
+                    <p class="notification-time">2 hours ago</p>
+                </div>
+            </div>
+
+            <div class="notification-item unread">
+                <div class="notification-icon info">
+                    <i data-feather="navigation" aria-hidden="true"></i>
+                </div>
+                <div class="notification-content">
+                    <p class="notification-title">Shipment Update</p>
+                    <p class="notification-text">Your booking #FF240567890 is now in transit</p>
+                    <p class="notification-time">5 hours ago</p>
+                </div>
+            </div>
+
+            <div class="notification-item">
+                <div class="notification-icon warning">
+                    <i data-feather="clock" aria-hidden="true"></i>
+                </div>
+                <div class="notification-content">
+                    <p class="notification-title">Pickup Reminder</p>
+                    <p class="notification-text">Pickup scheduled for tomorrow at 10:00 AM</p>
+                    <p class="notification-time">1 day ago</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-text mark-all-read">Mark all as read</button>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/tracking.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search and book trucks for freight transportation across India">
+    <title>Book Freight - Search Results - FreightFlow</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/booking.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo" aria-label="FreightFlow home">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">FreightFlow</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i data-feather="menu"></i>
+            </button>
+            
+            <div class="nav-menu">
+                <ul class="nav-links" role="list">
+                    <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="tracking.html" class="nav-link">Track Load</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-secondary btn-sign-in" onclick="handleSignIn()">
+                        Sign In
+                    </button>
+                    <a href="booking.html" class="btn btn-primary">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <section class="search-bar-section" style="position: relative; overflow: visible; z-index: 100;">
+        <div class="search-bar-container">
+            <form class="search-bar" id="searchBar" role="search">
+                <div class="search-input-group">
+                    <div class="search-field">
+                        <label for="searchPickup" class="sr-only">Pickup location</label>
+                        <i data-feather="map-pin" aria-hidden="true"></i>
+                        <input 
+                            type="text" 
+                            id="searchPickup" 
+                            placeholder="Pickup Location"
+                            autocomplete="off"
+                            value="Mumbai"
+                        >
+                        <ul id="pickupSuggestions" class="autocomplete-list" role="listbox" style="overflow-y: auto; z-index: 1000;"></ul>
+                    </div>
+
+                    <div class="search-field">
+                        <label for="searchDelivery" class="sr-only">Delivery location</label>
+                        <i data-feather="navigation" aria-hidden="true"></i>
+                        <input 
+                            type="text" 
+                            id="searchDelivery" 
+                            placeholder="Delivery Location"
+                            autocomplete="off"
+                            value="Pune"
+                        >
+                        <ul id="deliverySuggestions" class="autocomplete-list" role="listbox" style="overflow-y: auto; z-index: 1000;"></ul>
+                    </div>
+
+                    <div class="search-field">
+                        <label for="searchTruckType" class="sr-only">Truck type</label>
+                        <i data-feather="truck" aria-hidden="true"></i>
+                        <select id="searchTruckType">
+                            <option value="">All Truck Types</option>
+                            <option value="open">Open Body</option>
+                            <option value="container">Container</option>
+                            <option value="trailer">Trailer</option>
+                            <option value="tanker">Tanker</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i data-feather="search"></i>
+                        <span>Search</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="booking-main" >
+        <div class="booking-container">
+            <!-- Filters Sidebar -->
+            <aside class="filters-sidebar" id="filtersSidebar">
+                <div class="filters-header">
+                    <h3>Filters</h3>
+                    <button class="filters-close" id="filtersClose" aria-label="Close filters">
+                        <i data-feather="x"></i>
+                    </button>
+                </div>
+
+                <form id="filtersForm">
+                    <!-- Price Range Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-title">Price Range</h4>
+                        <div class="price-slider">
+                            <input type="range" id="priceMin" name="priceMin" min="5000" max="25000" value="5000" step="500">
+                            <input type="range" id="priceMax" name="priceMax" min="5000" max="25000" value="25000" step="500">
+                            <div class="price-display">
+                                <span id="priceMinDisplay">₹5,000</span> - <span id="priceMaxDisplay">₹25,000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rating Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-title">Rating</h4>
+                        <div class="rating-filter">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="rating" value="5">
+                                <span>5★ (Best)</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="rating" value="4">
+                                <span>4★ & up</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="rating" value="3">
+                                <span>3★ & up</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Availability Filter -->
+                    <div class="filter-group">
+                        <h4 class="filter-title">Availability</h4>
+                        <div class="rating-filter">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="availability" value="available">
+                                <span>Available Now</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="availability" value="scheduled">
+                                <span>Scheduled</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div style="display: flex; gap: var(--space-2); margin-top: var(--space-5);">
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i data-feather="check"></i>
+                            Apply Filters
+                        </button>
+                        <button type="reset" class="btn btn-secondary btn-full">
+                            Reset
+                        </button>
+                    </div>
+                </form>
+            </aside>
+
+
+            <!-- Truck Results -->
+            <div class="results-container">
+                <!-- Results Top (Title + Sort) -->
+                <div class="results-top">
+                    <div class="results-left">
+                        <h2 class="results-title">Available Trucks</h2>
+                        <p class="results-count">(<span id="resultCount">6</span> results)</p>
+                    </div>
+                    
+                    <div class="sort-section">
+                        <label class="sort-label" for="sortBy">Sort by:</label>
+                        <select id="sortBy" class="sort-select">
+                            <option value="recommended">Recommended</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Rating: High to Low</option>
+                            <option value="availability">Availability</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <!-- Truck Cards Grid -->
+                <div class="truck-results-grid" id="resultsGrid">
+                    <!-- Truck cards will be rendered here -->
+                     
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults" hidden>
+                    <div class="no-results-icon">🚚</div>
+                    <h3>No trucks found</h3>
+                    <p>Try adjusting your search filters</p>
+                    <a href="index.html" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">FreightFlow</span>
+                    </div>
+                    <p>AI-powered freight matching for the Indian logistics industry.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="booking.html">Book Freight</a></li>
+                        <li><a href="tracking.html">Track Shipment</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FreightFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+        <script src="js/main.js"></script>
+    <script src="js/filters.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

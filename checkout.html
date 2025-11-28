@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your freight booking with secure payment options">
+    <title>Checkout - FreightFlow</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo" aria-label="FreightFlow home">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">FreightFlow</span>
+                </a>
+            </div>
+            
+            <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i data-feather="menu"></i>
+            </button>
+            
+            <div class="nav-menu">
+                <ul class="nav-links" role="list">
+                    <li><a href="index.html#how-it-works" class="nav-link">How It Works</a></li>
+                    <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                    <li><a href="tracking.html" class="nav-link">Track Load</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="btn btn-secondary btn-sign-in" onclick="handleSignIn()">
+                        Sign In
+                    </button>
+                    <a href="booking.html" class="btn btn-primary">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="checkout-main">
+        <div class="checkout-container">
+            <!-- Progress Bar -->
+            <div class="progress-bar">
+                <div class="progress-item completed">
+                    <div class="progress-number">1</div>
+                    <span class="progress-label">Search</span>
+                </div>
+                <div class="progress-line completed"></div>
+                <div class="progress-item completed">
+                    <div class="progress-number">2</div>
+                    <span class="progress-label">Details</span>
+                </div>
+                <div class="progress-line active"></div>
+                <div class="progress-item active">
+                    <div class="progress-number">3</div>
+                    <span class="progress-label">Payment</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-item">
+                    <div class="progress-number">4</div>
+                    <span class="progress-label">Confirm</span>
+                </div>
+            </div>
+
+            <div class="checkout-grid">
+                <!-- Left Side: Checkout Form -->
+                <div class="checkout-form-section">
+                    <!-- Load Details -->
+                    <div class="form-section">
+                        <h2 class="form-section-title">Load Details</h2>
+                        
+                        <form id="checkoutForm">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="material">Material Type *</label>
+                                    <select id="material" name="material" required>
+                                        <option value="">Select Material Type</option>
+                                        <option value="agricultural">Agricultural Products</option>
+                                        <option value="fmcg">FMCG Goods</option>
+                                        <option value="construction">Construction Materials</option>
+                                        <option value="electronics">Electronics</option>
+                                        <option value="textiles">Textiles</option>
+                                        <option value="chemicals">Chemicals</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="weight">Weight (Tons) *</label>
+                                    <input type="number" id="weight" name="weight" placeholder="Enter weight" step="0.1" required>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="description">Load Description</label>
+                                <textarea id="description" name="description" placeholder="Add any special instructions or notes" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="pickupDate">Pickup Date *</label>
+                                    <input type="date" id="pickupDate" name="pickupDate" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="pickupTime">Pickup Time *</label>
+                                    <input type="time" id="pickupTime" name="pickupTime" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label for="contactName">Contact Person *</label>
+                                    <input type="text" id="contactName" name="contactName" placeholder="Your name" required>
+                                </div>
+
+                                <div class="form-field">
+                                    <label for="phone">Phone Number *</label>
+                                    <input type="tel" id="phone" name="phone" placeholder="10-digit mobile" pattern="[0-9]{10}" required>
+                                </div>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+
+                            <!-- Insurance Checkbox -->
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="insurance" name="insurance">
+                                <label for="insurance">
+                                    <span class="checkbox-label">Add Cargo Insurance</span>
+                                    <span class="checkbox-price">+ ₹500</span>
+                                </label>
+                            </div>
+
+                            <!-- Terms Checkbox -->
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms">
+                                    I agree to the Terms & Conditions and Privacy Policy *
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="form-section">
+                        <h2 class="form-section-title">Payment Method</h2>
+                        
+                        <div class="payment-tabs">
+                            <button class="payment-tab active" data-method="upi">
+                                <i data-feather="smartphone"></i>
+                                <span>UPI</span>
+                            </button>
+                            <button class="payment-tab" data-method="card">
+                                <i data-feather="credit-card"></i>
+                                <span>Card</span>
+                            </button>
+                            <button class="payment-tab" data-method="banking">
+                                <i data-feather="building"></i>
+                                <span>Net Banking</span>
+                            </button>
+                            <button class="payment-tab" data-method="wallet">
+                                <i data-feather="gift"></i>
+                                <span>Wallet</span>
+                            </button>
+                            <button class="payment-tab" data-method="cash">
+                                <i data-feather="dollar-sign"></i>
+                                <span>Cash</span>
+                            </button>
+                        </div>
+
+                        <!-- UPI Payment -->
+                        <div class="payment-method active" id="upi-method">
+                            <h3>Enter UPI ID</h3>
+                            <input type="text" class="payment-input" placeholder="yourname@paytm" value="">
+                            <button class="btn btn-primary btn-full" onclick="verifyUPI()">Verify UPI</button>
+                            
+                            <div class="payment-divider">
+                                <span>OR</span>
+                            </div>
+
+                            <h3>Pay Using Popular Apps</h3>
+                            <div class="app-buttons">
+                                <button class="app-btn" onclick="selectPaymentApp('gpay')">
+                                    <span class="app-icon">📱</span>
+                                    <span>Google Pay</span>
+                                </button>
+                                <button class="app-btn" onclick="selectPaymentApp('phonepe')">
+                                    <span class="app-icon">📱</span>
+                                    <span>PhonePe</span>
+                                </button>
+                                <button class="app-btn" onclick="selectPaymentApp('paytm')">
+                                    <span class="app-icon">📱</span>
+                                    <span>Paytm</span>
+                                </button>
+                                <button class="app-btn" onclick="selectPaymentApp('bhim')">
+                                    <span class="app-icon">📱</span>
+                                    <span>BHIM</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card Payment -->
+                        <div class="payment-method" id="card-method">
+                            <div class="form-field">
+                                <label>Card Number</label>
+                                <input type="text" class="payment-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label>Expiry Date</label>
+                                    <input type="text" class="payment-input" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="form-field">
+                                    <label>CVV</label>
+                                    <input type="text" class="payment-input" placeholder="123" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Net Banking -->
+                        <div class="payment-method" id="banking-method">
+                            <h3>Select Your Bank</h3>
+                            <div class="bank-grid">
+                                <button class="bank-btn" onclick="selectBank('hdfc')">🏦 HDFC Bank</button>
+                                <button class="bank-btn" onclick="selectBank('icici')">🏦 ICICI Bank</button>
+                                <button class="bank-btn" onclick="selectBank('sbi')">🏦 SBI</button>
+                                <button class="bank-btn" onclick="selectBank('axis')">🏦 Axis Bank</button>
+                                <button class="bank-btn" onclick="selectBank('kotak')">🏦 Kotak Bank</button>
+                                <button class="bank-btn" onclick="selectBank('other')">🏦 Other Banks</button>
+                            </div>
+                        </div>
+
+                        <!-- Wallet Payment -->
+                        <div class="payment-method" id="wallet-method">
+                            <h3>Select Wallet</h3>
+                            <div class="wallet-grid">
+                                <button class="wallet-btn" onclick="selectWallet('paytm')">👛 Paytm Wallet</button>
+                                <button class="wallet-btn" onclick="selectWallet('phonepe')">👛 PhonePe Wallet</button>
+                                <button class="wallet-btn" onclick="selectWallet('amazon')">👛 Amazon Pay</button>
+                                <button class="wallet-btn" onclick="selectWallet('mobikwik')">👛 MobiKwik</button>
+                            </div>
+                        </div>
+
+                        <!-- Cash Payment -->
+                        <div class="payment-method" id="cash-method">
+                            <div class="cash-info">
+                                <div class="cash-icon">💵</div>
+                                <h3>Pay by Cash</h3>
+                                <p>Pay the driver directly in cash when they arrive for pickup.</p>
+                                <div class="cash-details">
+                                    <p><strong>Amount Due:</strong></p>
+                                    <p class="amount-display" id="cash-amount">₹0</p>
+                                </div>
+                                <div class="cash-note">
+                                    <i data-feather="alert-circle"></i>
+                                    <span>Please keep the exact amount ready. No change will be provided by the driver.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side: Order Summary -->
+                <aside class="order-summary">
+                    <h3>Order Summary</h3>
+
+                    <!-- Route Details -->
+                    <div class="summary-section">
+                        <h4>Route Details</h4>
+                        <div class="route-info">
+                            <div class="route-point">
+                                <span class="route-label">Pickup</span>
+                                <span class="route-city">Mumbai, Maharashtra</span>
+                            </div>
+                            <div class="route-arrow">↓</div>
+                            <div class="route-point">
+                                <span class="route-label">Delivery</span>
+                                <span class="route-city">Pune, Maharashtra</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Truck Info -->
+                    <div class="summary-section">
+                        <h4>Truck Details</h4>
+                        <p class="truck-name" id="summaryTruckName">Tata 407 Open Body</p>
+                        <p class="truck-specs">9 Tons • 19 Feet</p>
+                    </div>
+
+                    <!-- Price Breakdown -->
+                    <div class="summary-section">
+                        <h4>Price Breakdown</h4>
+                        <div class="price-breakdown">
+                            <div class="breakdown-item">
+                                <span>Base Fare (450 km)</span>
+                                <span class="amount" id="baseFare">₹10,800</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Loading/Unloading</span>
+                                <span class="amount" id="loadingCharge">₹800</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Toll Charges (est.)</span>
+                                <span class="amount" id="tollCharges">₹450</span>
+                            </div>
+                            <div class="breakdown-item" id="insuranceItem" style="display: none;">
+                                <span>Cargo Insurance</span>
+                                <span class="amount" id="insuranceAmount">₹500</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>GST (5%)</span>
+                                <span class="amount" id="gstAmount">₹450</span>
+                            </div>
+                            <div class="breakdown-total">
+                                <span>Total Amount</span>
+                                <span class="amount" id="totalAmount">₹12,500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trust Badges & Payment Button -->
+                    <div class="order-summary-footer">
+                        <!-- Payment Button -->
+                        <button id="payBtn" class="btn btn-primary btn-full btn-large" onclick="processPayment()">
+                            <span id="payBtnText">Pay ₹12,500</span>
+                        </button>
+                        <!-- Trust Badges -->
+                        <div class="trust-badges">
+                            <div class="badge">PCI Compliant</div>
+                            <div class="badge">100% Verified</div>
+                            <div class="badge">SSL Secured</div>
+                        </div>
+
+                        
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <!-- Success Modal -->
+    <div class="modal" id="successModal" style="display: none;">
+        <div class="modal-content" onclick="event.stopPropagation();">
+            <div class="modal-header">
+                <div class="success-icon">✓</div>
+                <button class="modal-close" onclick="document.getElementById('successModal').style.display='none'; document.body.style.overflow='auto';" aria-label="Close modal">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <h2>Booking Confirmed!</h2>
+            <p class="modal-message">Your freight booking has been successfully confirmed.</p>
+            <div class="booking-details">
+                <div class="detail-item">
+                    <span class="detail-label">Booking ID:</span>
+                    <span class="detail-value" id="bookingId">FF240567891</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Total Amount:</span>
+                    <span class="detail-value" id="totalAmountModal">₹12,500</span>
+                </div>
+            </div>
+
+            <div class="booking-notes">
+                <div class="note">🚚 Driver will contact you within 30 minutes</div>
+                <div class="note">💬 Confirmation sent to mobile & email</div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-primary" onclick="window.location.href='tracking.html'">
+                    Track Shipment
+                </button>
+                <button class="btn btn-secondary" onclick="downloadInvoice()">
+                    Download Invoice
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <span class="logo-icon">⚡</span>
+                        <span class="logo-text">FreightFlow</span>
+                    </div>
+                    <p>AI-powered freight matching for the Indian logistics industry.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="booking.html">Book Freight</a></li>
+                        <li><a href="tracking.html">Track Shipment</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 FreightFlow. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        feather.replace();
+    </script>
+
+    <!-- Checkout Logic -->
+<!-- Checkout Logic -->
+<script>
+    /**
+     * FREIGHTFLOW - CHECKOUT LOGIC
+     * Real-time calculations and payment processing
+     */
+
+    const INSURANCE_AMOUNT = 500;
+    let baseFareAmount = 10800;
+    let loadingCharge = 800;
+    let tollCharges = 450;
+    let selectedPaymentMethod = 'upi';
+    let isFormSubmitted = false;
+
+    // ===== INITIALIZE =====
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Checkout page initialized');
+        
+        // Setup insurance checkbox
+        const insuranceCheckbox = document.getElementById('insurance');
+        if (insuranceCheckbox) {
+            insuranceCheckbox.addEventListener('change', updateTotal);
+        }
+
+        // Setup payment tabs
+        setupPaymentTabs();
+        
+        // Initial calculation
+        updateTotal();
+
+        // Hide modal on page load
+        const modal = document.getElementById('successModal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+
+        // Set default date to today
+        const pickupDate = document.getElementById('pickupDate');
+        if (pickupDate) {
+            const today = new Date();
+            const dd = String(today.getDate()).padStart(2, '0');
+            const mm = String(today.getMonth() + 1).padStart(2, '0');
+            const yyyy = today.getFullYear();
+            pickupDate.value = yyyy + '-' + mm + '-' + dd;
+        }
+
+        // Set default time
+        const pickupTime = document.getElementById('pickupTime');
+        if (pickupTime) {
+            pickupTime.value = '10:00';
+        }
+    });
+
+    // ===== SETUP PAYMENT TABS =====
+    function setupPaymentTabs() {
+        const tabs = document.querySelectorAll('.payment-tab');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const method = this.dataset.method;
+                selectPaymentMethod(method);
+            });
+        });
+    }
+
+    // ===== SELECT PAYMENT METHOD =====
+    function selectPaymentMethod(method) {
+        console.log('Selected payment method:', method);
+        selectedPaymentMethod = method;
+
+        // Update active tab
+        document.querySelectorAll('.payment-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.querySelector(`[data-method="${method}"]`).classList.add('active');
+
+        // Update active method display
+        document.querySelectorAll('.payment-method').forEach(m => {
+            m.classList.remove('active');
+        });
+        document.getElementById(`${method}-method`).classList.add('active');
+
+        // Update cash amount display if cash method
+        if (method === 'cash') {
+            const totalAmount = calculateTotal();
+            document.getElementById('cash-amount').textContent = formatCurrency(totalAmount);
+        }
+    }
+
+    // ===== UPDATE TOTAL CALCULATION (REAL-TIME) =====
+    function updateTotal() {
+        console.log('Updating total...');
+        
+        const insuranceCheckbox = document.getElementById('insurance');
+        const insuranceItem = document.getElementById('insuranceItem');
+        const baseFareEl = document.getElementById('baseFare');
+        const loadingEl = document.getElementById('loadingCharge');
+        const tollEl = document.getElementById('tollCharges');
+        const insuranceAmountEl = document.getElementById('insuranceAmount');
+        const gstEl = document.getElementById('gstAmount');
+        const totalEl = document.getElementById('totalAmount');
+        const payBtn = document.getElementById('payBtn');
+        const payBtnText = document.getElementById('payBtnText');
+
+        // Show/hide insurance line item
+        if (insuranceCheckbox && insuranceCheckbox.checked) {
+            insuranceItem.style.display = 'flex';
+        } else if (insuranceItem) {
+            insuranceItem.style.display = 'none';
+        }
+
+        // Calculate subtotal (before GST)
+        let subtotal = baseFareAmount + loadingCharge + tollCharges;
+        if (insuranceCheckbox && insuranceCheckbox.checked) {
+            subtotal += INSURANCE_AMOUNT;
+        }
+
+        // Calculate GST (5%)
+        const gst = Math.round(subtotal * 0.05);
+
+        // Calculate total
+        const total = subtotal + gst;
+
+        // Update display
+        if (baseFareEl) baseFareEl.textContent = formatCurrency(baseFareAmount);
+        if (loadingEl) loadingEl.textContent = formatCurrency(loadingCharge);
+        if (tollEl) tollEl.textContent = formatCurrency(tollCharges);
+        if (insuranceAmountEl) insuranceAmountEl.textContent = formatCurrency(INSURANCE_AMOUNT);
+        if (gstEl) gstEl.textContent = formatCurrency(gst);
+        if (totalEl) totalEl.textContent = formatCurrency(total);
+        if (payBtnText) payBtnText.textContent = `Pay ${formatCurrency(total)}`;
+
+        // Update cash amount
+        const cashMethod = document.getElementById('cash-method');
+        if (cashMethod && cashMethod.classList.contains('active')) {
+            document.getElementById('cash-amount').textContent = formatCurrency(total);
+        }
+
+        console.log('Total updated:', total);
+    }
+
+    // ===== CALCULATE TOTAL =====
+    function calculateTotal() {
+        const insuranceCheckbox = document.getElementById('insurance');
+        let subtotal = baseFareAmount + loadingCharge + tollCharges;
+        
+        if (insuranceCheckbox && insuranceCheckbox.checked) {
+            subtotal += INSURANCE_AMOUNT;
+        }
+
+        const gst = Math.round(subtotal * 0.05);
+        return subtotal + gst;
+    }
+
+    // ===== FORMAT CURRENCY =====
+    function formatCurrency(amount) {
+        return '₹' + amount.toLocaleString('en-IN');
+    }
+
+    // ===== PAYMENT METHOD FUNCTIONS =====
+    function verifyUPI() {
+        const upiInput = document.querySelector('#upi-method input');
+        const upiValue = upiInput ? upiInput.value.trim() : '';
+
+        if (!upiValue) {
+            alert('Please enter UPI ID');
+            return;
+        }
+
+        if (!upiValue.includes('@')) {
+            alert('Please enter valid UPI ID (e.g., yourname@paytm)');
+            return;
+        }
+
+        console.log('UPI verified:', upiValue);
+        processPayment();
+    }
+
+    function selectPaymentApp(app) {
+        console.log('Selected app:', app);
+        processPayment();
+    }
+
+    function selectBank(bank) {
+        console.log('Selected bank:', bank);
+        processPayment();
+    }
+
+    function selectWallet(wallet) {
+        console.log('Selected wallet:', wallet);
+        processPayment();
+    }
+
+    // ===== PROCESS PAYMENT =====
+    function processPayment() {
+        console.log('Processing payment with method:', selectedPaymentMethod);
+
+        // Get form
+        const form = document.getElementById('checkoutForm');
+        if (!form) {
+            console.error('Form not found!');
+            return;
+        }
+
+        // Validate form fields manually
+        const material = document.getElementById('material').value.trim();
+        const weight = document.getElementById('weight').value.trim();
+        const contactName = document.getElementById('contactName').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const pickupDate = document.getElementById('pickupDate').value.trim();
+        const pickupTime = document.getElementById('pickupTime').value.trim();
+        const terms = document.getElementById('terms').checked;
+
+        console.log('Form validation check:');
+        console.log('Material:', material);
+        console.log('Weight:', weight);
+        console.log('Contact Name:', contactName);
+        console.log('Phone:', phone);
+        console.log('Email:', email);
+        console.log('Pickup Date:', pickupDate);
+        console.log('Pickup Time:', pickupTime);
+        console.log('Terms:', terms);
+
+        // Validate required fields
+        if (!material) {
+            alert('Please select material type');
+            document.getElementById('material').focus();
+            return;
+        }
+
+        if (!weight || isNaN(weight) || weight <= 0) {
+            alert('Please enter valid weight');
+            document.getElementById('weight').focus();
+            return;
+        }
+
+        if (!pickupDate) {
+            alert('Please select pickup date');
+            document.getElementById('pickupDate').focus();
+            return;
+        }
+
+        if (!pickupTime) {
+            alert('Please select pickup time');
+            document.getElementById('pickupTime').focus();
+            return;
+        }
+
+        if (!contactName) {
+            alert('Please enter contact person name');
+            document.getElementById('contactName').focus();
+            return;
+        }
+
+        if (!phone || phone.length !== 10 || isNaN(phone)) {
+            alert('Please enter valid 10-digit phone number');
+            document.getElementById('phone').focus();
+            return;
+        }
+
+        if (!email || !email.includes('@')) {
+            alert('Please enter valid email address');
+            document.getElementById('email').focus();
+            return;
+        }
+
+        if (!terms) {
+            alert('Please accept terms and conditions');
+            document.getElementById('terms').focus();
+            return;
+        }
+
+        console.log('All validations passed! Proceeding with payment...');
+
+        // Disable button during processing
+        const payBtn = document.getElementById('payBtn');
+        const originalText = payBtn.textContent;
+        payBtn.disabled = true;
+        payBtn.innerHTML = '<i data-feather="loader"></i> Processing...';
+        
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+
+        // Simulate payment processing (1.5 seconds)
+        setTimeout(() => {
+            console.log('Payment successful!');
+            
+            // Mark form as submitted
+            isFormSubmitted = true;
+            
+            // Show success modal
+            showSuccessModal();
+            
+            // Reset button
+            payBtn.disabled = false;
+            payBtn.textContent = originalText;
+        }, 1500);
+    }
+
+    // ===== SHOW SUCCESS MODAL =====
+    function showSuccessModal() {
+        console.log('Showing success modal...');
+        
+        const modal = document.getElementById('successModal');
+        const bookingId = 'FF' + Math.random().toString().slice(2, 11).toUpperCase();
+        const totalAmount = calculateTotal();
+
+        if (document.getElementById('bookingId')) {
+            document.getElementById('bookingId').textContent = bookingId;
+        }
+        if (document.getElementById('totalAmountModal')) {
+            document.getElementById('totalAmountModal').textContent = formatCurrency(totalAmount);
+        }
+
+        if (modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // ===== DOWNLOAD INVOICE =====
+    function downloadInvoice() {
+        console.log('Downloading invoice...');
+        alert('Invoice PDF will be downloaded. (In production, this would generate and download a PDF file)');
+        window.location.href = 'booking.html';
+    }
+
+    // ===== CLOSE MODAL ON ESCAPE =====
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('successModal');
+            if (modal && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+
+    // ===== CLOSE MODAL WHEN CLICKING OUTSIDE =====
+    window.addEventListener('click', function(e) {
+        const modal = document.getElementById('successModal');
+        if (modal && e.target === modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+</script>
+
+
+</body>
+</html>

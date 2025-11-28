@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "region": "West",
+    "type": "major_hub",
+    "lat": 19.0760,
+    "lng": 72.8777
+  },
+  {
+    "id": 2,
+    "city": "Delhi",
+    "state": "Delhi",
+    "region": "North",
+    "type": "major_hub",
+    "lat": 28.7041,
+    "lng": 77.1025
+  },
+  {
+    "id": 3,
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "region": "South",
+    "type": "major_hub",
+    "lat": 12.9716,
+    "lng": 77.5946
+  },
+  {
+    "id": 4,
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "region": "South",
+    "type": "major_hub",
+    "lat": 17.3850,
+    "lng": 78.4867
+  },
+  {
+    "id": 5,
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "region": "South",
+    "type": "major_hub",
+    "lat": 13.0827,
+    "lng": 80.2707
+  },
+  {
+    "id": 6,
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "region": "East",
+    "type": "major_hub",
+    "lat": 22.5726,
+    "lng": 88.3639
+  },
+  {
+    "id": 7,
+    "city": "Pune",
+    "state": "Maharashtra",
+    "region": "West",
+    "type": "major_hub",
+    "lat": 18.5204,
+    "lng": 73.8567
+  },
+  {
+    "id": 8,
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "region": "West",
+    "type": "major_hub",
+    "lat": 23.0225,
+    "lng": 72.5714
+  },
+  {
+    "id": 9,
+    "city": "Surat",
+    "state": "Gujarat",
+    "region": "West",
+    "type": "tier2",
+    "lat": 21.1702,
+    "lng": 72.8311
+  },
+  {
+    "id": 10,
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "region": "North",
+    "type": "tier2",
+    "lat": 26.9124,
+    "lng": 75.7873
+  },
+  {
+    "id": 11,
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "region": "North",
+    "type": "tier2",
+    "lat": 26.8467,
+    "lng": 80.9462
+  },
+  {
+    "id": 12,
+    "city": "Kanpur",
+    "state": "Uttar Pradesh",
+    "region": "North",
+    "type": "tier2",
+    "lat": 26.4499,
+    "lng": 80.3319
+  },
+  {
+    "id": 13,
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "region": "Central",
+    "type": "tier2",
+    "lat": 21.1458,
+    "lng": 79.0882
+  },
+  {
+    "id": 14,
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "region": "Central",
+    "type": "tier2",
+    "lat": 22.7196,
+    "lng": 75.8577
+  },
+  {
+    "id": 15,
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "region": "Central",
+    "type": "tier2",
+    "lat": 23.2599,
+    "lng": 77.4126
+  },
+  {
+    "id": 16,
+    "city": "Visakhapatnam",
+    "state": "Andhra Pradesh",
+    "region": "South",
+    "type": "tier2",
+    "lat": 17.6868,
+    "lng": 83.2185
+  },
+  {
+    "id": 17,
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "region": "South",
+    "type": "tier2",
+    "lat": 11.0168,
+    "lng": 76.9558
+  },
+  {
+    "id": 18,
+    "city": "Kochi",
+    "state": "Kerala",
+    "region": "South",
+    "type": "tier2",
+    "lat": 9.9312,
+    "lng": 76.2673
+  },
+  {
+    "id": 19,
+    "city": "Vadodara",
+    "state": "Gujarat",
+    "region": "West",
+    "type": "tier2",
+    "lat": 22.3072,
+    "lng": 73.1812
+  },
+  {
+    "id": 20,
+    "city": "Gurgaon",
+    "state": "Haryana",
+    "region": "North",
+    "type": "tier2",
+    "lat": 28.4595,
+    "lng": 77.0266
+  },
+  {
+    "id": 21,
+    "city": "Noida",
+    "state": "Uttar Pradesh",
+    "region": "North",
+    "type": "tier2",
+    "lat": 28.5355,
+    "lng": 77.3910
+  },
+  {
+    "id": 22,
+    "city": "Faridabad",
+    "state": "Haryana",
+    "region": "North",
+    "type": "tier2",
+    "lat": 28.4089,
+    "lng": 77.3178
+  },
+  {
+    "id": 23,
+    "city": "Nashik",
+    "state": "Maharashtra",
+    "region": "West",
+    "type": "tier2",
+    "lat": 19.9975,
+    "lng": 73.7898
+  },
+  {
+    "id": 24,
+    "city": "Rajkot",
+    "state": "Gujarat",
+    "region": "West",
+    "type": "tier2",
+    "lat": 22.3039,
+    "lng": 70.8022
+  },
+  {
+    "id": 25,
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "region": "North",
+    "type": "tier2",
+    "lat": 30.9010,
+    "lng": 75.8573
+  },
+  {
+    "id": 26,
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "region": "North",
+    "type": "tier2",
+    "lat": 30.7333,
+    "lng": 76.7794
+  },
+  {
+    "id": 27,
+    "city": "Patna",
+    "state": "Bihar",
+    "region": "East",
+    "type": "tier2",
+    "lat": 25.5941,
+    "lng": 85.1376
+  },
+  {
+    "id": 28,
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "region": "East",
+    "type": "tier2",
+    "lat": 20.2961,
+    "lng": 85.8245
+  },
+  {
+    "id": 29,
+    "city": "Guwahati",
+    "state": "Assam",
+    "region": "Northeast",
+    "type": "tier2",
+    "lat": 26.1445,
+    "lng": 91.7362
+  },
+  {
+    "id": 30,
+    "city": "Thiruvananthapuram",
+    "state": "Kerala",
+    "region": "South",
+    "type": "tier2",
+    "lat": 8.5241,
+    "lng": 76.9366
+  }
+]

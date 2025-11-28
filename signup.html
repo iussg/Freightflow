@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create a FreightFlow account">
+    <title>Sign Up - FreightFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body class="auth-page">
+    <nav class="navbar" role="navigation">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo" aria-label="FreightFlow home">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">FreightFlow</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="auth-main">
+        <div class="auth-container">
+            <!-- Sign Up Form -->
+            <div class="auth-card">
+                <div class="auth-header">
+                    <h1>Create Account</h1>
+                    <p>Join FreightFlow and start booking trucks</p>
+                </div>
+                <!-- User Type Selection -->
+                <div class="user-type-selector">
+                    <button type="button" class="type-btn active" data-type="shipper">
+                        <i data-feather="package"></i>
+                        <span>Shipper</span>
+                    </button>
+                    <button type="button" class="type-btn" data-type="transporter">
+                        <i data-feather="truck"></i>
+                        <span>Transporter</span>
+                    </button>
+                </div>
+                <form id="signupForm" class="auth-form" autocomplete="off">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <div class="input-wrapper">
+                            <i data-feather="user" aria-hidden="true"></i>
+                            <input type="text" id="fullname" name="fullname" placeholder="Your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <div class="input-wrapper">
+                            <i data-feather="mail" aria-hidden="true"></i>
+                            <input type="email" id="signup-email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-wrapper">
+                            <i data-feather="phone" aria-hidden="true"></i>
+                            <input type="tel" id="phone" name="phone" placeholder="10-digit number" pattern="[0-9]{10}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <div class="input-wrapper">
+                            <i data-feather="lock" aria-hidden="true"></i>
+                            <input type="password" id="signup-password" name="password" placeholder="Min 8 characters" minlength="8" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('signup-password')">
+                                <i data-feather="eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="input-wrapper">
+                            <i data-feather="lock" aria-hidden="true"></i>
+                            <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword('confirm-password')">
+                                <i data-feather="eye" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <label class="checkbox-label full-width">
+                        <input type="checkbox" name="terms" required>
+                        <span>I agree to the <a href="#" class="inline-link">Terms of Service</a> and <a href="#" class="inline-link">Privacy Policy</a></span>
+                    </label>
+                    <button type="submit" class="btn btn-primary btn-full btn-large">Create Account</button>
+                </form>
+                <div class="auth-divider"><span>OR</span></div>
+                <div class="social-buttons">
+                    <button type="button" class="btn-social" onclick="socialSignUp('google')">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle></svg>
+                        Google
+                    </button>
+                    <button type="button" class="btn-social" onclick="socialSignUp('phone')">
+                        <i data-feather="phone" aria-hidden="true"></i>
+                        Phone
+                    </button>
+                </div>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="signin.html" class="auth-link">Sign in here</a></p>
+                </div>
+            </div>
+            <!-- Features Sidebar -->
+            <aside class="auth-features">
+                <h2>Get Started Today</h2>
+                <ul class="features-list">
+                    <li><i data-feather="check-circle"></i>No credit card required</li>
+                    <li><i data-feather="check-circle"></i>Instant account creation</li>
+                    <li><i data-feather="check-circle"></i>Book trucks in minutes</li>
+                    <li><i data-feather="check-circle"></i>Secure & verified platform</li>
+                    <li><i data-feather="check-circle"></i>Join 50,000+ users</li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 FreightFlow. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/api.js"></script>
+    <script>
+        feather.replace();
+        let selectedUserType = 'shipper';
+        document.querySelectorAll('.type-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                selectedUserType = this.dataset.type;
+            });
+        });
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const btn = event.target.closest('.toggle-password');
+            if (field.type === 'password') {
+                field.type = 'text';
+                btn.innerHTML = '<i data-feather="eye-off" aria-hidden="true"></i>';
+            } else {
+                field.type = 'password';
+                btn.innerHTML = '<i data-feather="eye" aria-hidden="true"></i>';
+            }
+            feather.replace();
+        }
+        function socialSignUp(provider) {
+            alert(`Sign up with ${provider} coming soon!`);
+        }
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const terms = document.querySelector('input[name="terms"]').checked;
+            if (!terms) return alert('Please accept terms and conditions');
+            if (password !== confirmPassword) return alert('Passwords do not match');
+            try {
+                const result = await signUp(fullname, email, phone, password, selectedUserType);
+                alert('Account created successfully!');
+                window.location.href = 'dashboard.html';
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>
